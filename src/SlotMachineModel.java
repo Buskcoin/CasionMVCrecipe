@@ -1,23 +1,57 @@
 import java.util.Random;
 
 public class SlotMachineModel {
-	final String[] image = { "cherries", "7", "Bar" };
+	private String reel1;
+	private String reel2;
+	private String reel3;
 	String[] reels;
 
 	void pull() {
-		reels = new String[] { getRandomString(), getRandomString(), getRandomString() };
-	}
-
-	String[] getReels() {
-		return reels;
+		reel1 = getRandomString();
+		reel2 = getRandomString();
+		reel3 = getRandomString();
 	}
 
 	private String getRandomString() {
-		return image[new Random().nextInt(image.length)];
+		float f = (float) Math.random();
+		if(f < .20){
+			return "cherries";
+		}
+		else if(f <.50){
+			return "lemon";
+		}
+		else if(f <.75){
+			return "bar";
+		} else{
+			return "bar";
+		}
 	}
 
 	public int getWinnings(int betAmount) {
-		int multiplier = 5;
+		int multiplier = calulateMultiplier();
 		return betAmount * multiplier;
+	}
+
+	private int calulateMultiplier() {
+		if (reel1.equals(reel2) && reel2.equals(reel3)) {
+			return 2;
+		} else if (reel1.equals(reel2)) {
+			return 1;
+		}
+		return -1;
+
+	}
+
+	public String getReel1() {
+		// TODO Auto-generated method stub
+		return reel1;
+	}
+
+	public String getReel2() {
+		// TODO Auto-generated method stub
+		return reel2;
+	}
+	public String getReel3(){
+		return reel3;
 	}
 }
