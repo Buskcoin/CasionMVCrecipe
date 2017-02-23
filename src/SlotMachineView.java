@@ -1,68 +1,61 @@
-import java.awt.GridLayout;
-import java.awt.TextField;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class SlotMachineView extends JFrame {
 	// Intialize components.
-	JPanel panel = new JPanel();
-	JPanel gamblePanel = new JPanel();
-	JButton pull = new JButton("PULL");
-	JLabel reel1 = new JLabel();
-	JLabel reel2 = new JLabel();
-	JLabel reel3 = new JLabel();
-	JLabel winnings = new JLabel("Winnings", JLabel.CENTER);
-	JLabel betLabel = new JLabel("Bet Amount", JLabel.LEFT);
-	JLabel winAmount = new JLabel("0", JLabel.CENTER);
-	JLabel totalMoney = new JLabel("0", JLabel.CENTER);
-	JTextField bet = new JTextField(2);
 	ImageIcon CHERRIES = new ImageIcon("cherries.png");
-	ImageIcon SEVEN = new ImageIcon("seven.png");
-	ImageIcon BAR = new ImageIcon("bar.png");
 	ImageIcon LEMON = new ImageIcon("lemon.png");
 	ImageIcon SPACE = new ImageIcon("space.png");
-	int scroll = 0;
+	ImageIcon SEVEN = new ImageIcon("seven.png");
+	ImageIcon BAR = new ImageIcon("bar.png");
+	JButton cashOut = new JButton("Cash Out");
+	JButton betOne = new JButton("BET ONE");
+	JButton pull = new JButton("SPIN");
+	JPanel gamblePanel = new JPanel();
+	JPanel buttonPanel = new JPanel();
+	JPanel reelPanel = new JPanel();
+	JLabel reel1 = new JLabel(BAR);
+	JLabel reel2 = new JLabel(BAR);
+	JLabel reel3 = new JLabel(BAR);
+
+	JLabel winnerPaid = new JLabel("Winner Paid", JLabel.CENTER);
+	JLabel credits = new JLabel("Total Credits", JLabel.CENTER);
+	JLabel betLabel = new JLabel("Bet", JLabel.CENTER);
+	JLabel winAmount = new JLabel("0", JLabel.CENTER);
+	JLabel totalMoney = new JLabel("50", JLabel.CENTER);
+	JLabel bet = new JLabel("5", JLabel.CENTER);
+
+
 	public SlotMachineView() {
-		this.setLayout(new GridLayout(2, 1));
+		super("Slot Machine");
+		setLayout(new GridLayout(3, 1));
+		add(reelPanel);
 		add(gamblePanel);
-		this.add(panel);
-		panel.add(reel1);
-		panel.add(reel2);
-		panel.add(reel3);
-		panel.add(pull);
-		gamblePanel.add(totalMoney);
+		add(buttonPanel);
+		reelPanel.setLayout(new GridLayout(1, 3));
+		gamblePanel.setLayout(new GridLayout(2, 3));
+		// buttonPanel.setLayout(new GridLayout(1, 3));
+		reelPanel.add(reel1);
+		reelPanel.add(reel2);
+		reelPanel.add(reel3);
+		gamblePanel.add(credits);
 		gamblePanel.add(betLabel);
+		gamblePanel.add(winnerPaid);
+		gamblePanel.add(totalMoney);
 		gamblePanel.add(bet);
-		gamblePanel.add(winnings);
+
 		gamblePanel.add(winAmount);
-		String a = JOptionPane.showInputDialog("How Much money do you have?");
-		totalMoney.setText("$" + a);
-		panel.setLayout(new GridLayout(1, 3));
+		buttonPanel.add(cashOut);
+		buttonPanel.add(betOne);
+		buttonPanel.add(pull);
 		pack();
 	}
 
 	void setReel1(String symbol) {
-		//this.reel1.setText(symbol);
+		// this.reel1.setText(symbol);
 		this.reel1.setIcon(getIcon(symbol));
-	}
-	
-	void scrollReels(){
-		if(scroll < 256)
-			scroll++;
-			else{
-				scroll = 0;
-			}
-			reel1.setBounds(0, scroll, 256,256); 
-		    reel1.setIcon(reel1.getIcon());
-			reel2.setBounds(0, scroll*2, 256,256); 
-			reel3.setBounds(0, scroll*3, 256,256); 
 	}
 
 	private ImageIcon getIcon(String iconName) {
@@ -115,6 +108,7 @@ public class SlotMachineView extends JFrame {
 
 	public void addSlotListenter(ActionListener pullListener) {
 		pull.addActionListener(pullListener);
+		cashOut.addActionListener(pullListener);
 	}
 
 	void setWinAmount(int winnings) {
@@ -127,5 +121,18 @@ public class SlotMachineView extends JFrame {
 
 	public JButton getPull() {
 		return pull;
+	}
+	public JButton getCashout() {
+		return cashOut;
+	}
+	public void setBetAmount() {
+		this.bet.setText(""+4);
+	}
+	
+	public void setTotalMonet(int totalMoney){
+		this.totalMoney.setText(""+totalMoney);
+	}
+	public int getTotalMoney(){
+		return Integer.parseInt(totalMoney.getText());
 	}
 }

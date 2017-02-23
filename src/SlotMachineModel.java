@@ -1,11 +1,8 @@
-import java.util.Random;
 
 public class SlotMachineModel {
 	private String reel1;
 	private String reel2;
 	private String reel3;
-	String[] reels;
-
 	void pull() {
 		reel1 = getRandomString();
 		reel2 = getRandomString();
@@ -14,15 +11,13 @@ public class SlotMachineModel {
 
 	private String getRandomString() {
 		float f = (float) Math.random();
-		if(f < .20){
+		if (f < .20) {
 			return "cherries";
-		}
-		else if(f <.50){
+		} else if (f < .50) {
 			return "lemon";
-		}
-		else if(f <.75){
+		} else if (f < .75) {
 			return "bar";
-		} else{
+		} else {
 			return "bar";
 		}
 	}
@@ -39,19 +34,17 @@ public class SlotMachineModel {
 			return 1;
 		}
 		return -1;
-
 	}
 
 	public String getReel1() {
-		// TODO Auto-generated method stub
 		return reel1;
 	}
 
 	public String getReel2() {
-		// TODO Auto-generated method stub
 		return reel2;
 	}
-	public String getReel3(){
+
+	public String getReel3() {
 		return reel3;
 	}
 }
