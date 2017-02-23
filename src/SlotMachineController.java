@@ -48,7 +48,7 @@ public class SlotMachineController {
 				view.setTotalMonet((winnings + view.getTotalMoney()));
 				view.pack();
 			}
-			System.out.println(timer.getDelay());
+			System.out.println("Delay : "+timer.getDelay());
 			if (e.getSource() == view.getPull()) {
 				delay = new Random().nextInt(50) + 5;
 				timer.start();
