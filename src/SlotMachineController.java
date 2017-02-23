@@ -28,7 +28,7 @@ public class SlotMachineController {
 	 *
 	 */
 	class SlotMachineListener implements ActionListener {
-		int delay = 10;
+		int delay;
 
 		public SlotMachineListener() {
 
@@ -37,25 +37,23 @@ public class SlotMachineController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			timer.setDelay(delay);
-			delay *= 1.2;
+			delay *= 1.15;
 			model.pull();
 			setReels();
 			if (delay > 1000) {
-				delay = 1;
 				timer.stop();
 				int winnings = model.getWinnings(view.getBetAmount());
 				view.setWinAmount((winnings));
 				view.setTotalMonet((winnings + view.getTotalMoney()));
-				view.pack();
 			}
-			System.out.println("Delay : "+timer.getDelay());
+			System.out.println("Delay : " + timer.getDelay());
 			if (e.getSource() == view.getPull()) {
-				delay = new Random().nextInt(50) + 5;
+				delay = new Random().nextInt(20) + 10;
 				timer.start();
-				view.refresh();
 			} else if ((e.getSource() == view.getCashout())) {
 				JOptionPane.showMessageDialog(view, "You must gamble MORE!!");
 			}
+			view.refresh();
 		}
 
 		/**

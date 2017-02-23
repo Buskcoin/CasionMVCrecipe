@@ -3,6 +3,7 @@ public class SlotMachineModel {
 	private String reel1;
 	private String reel2;
 	private String reel3;
+
 	void pull() {
 		reel1 = getRandomString();
 		reel2 = getRandomString();

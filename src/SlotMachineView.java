@@ -27,7 +27,6 @@ public class SlotMachineView extends JFrame {
 	JLabel totalMoney = new JLabel("50", JLabel.CENTER);
 	JLabel bet = new JLabel("5", JLabel.CENTER);
 
-
 	public SlotMachineView() {
 		super("Slot Machine");
 		setLayout(new GridLayout(3, 1));
@@ -122,17 +121,20 @@ public class SlotMachineView extends JFrame {
 	public JButton getPull() {
 		return pull;
 	}
+
 	public JButton getCashout() {
 		return cashOut;
 	}
+
 	public void setBetAmount() {
-		this.bet.setText(""+4);
+		this.bet.setText("" + 4);
 	}
-	
-	public void setTotalMonet(int totalMoney){
-		this.totalMoney.setText(""+totalMoney);
+
+	public void setTotalMonet(int totalMoney) {
+		this.totalMoney.setText("" + totalMoney);
 	}
-	public int getTotalMoney(){
+
+	public int getTotalMoney() {
 		return Integer.parseInt(totalMoney.getText());
 	}
 }
