@@ -29,6 +29,7 @@ public class SlotMachineController {
 	 */
 	class SlotMachineListener implements ActionListener {
 		int delay;
+		private final int MAX_DELAY = 1000;
 
 		public SlotMachineListener() {
 
@@ -36,24 +37,38 @@ public class SlotMachineController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			updateReels();
+			if (delay > MAX_DELAY) {
+				stopReel();
+			}
+
+			if (e.getSource() == view.getPull()) {
+				startPull();
+			} else if ((e.getSource() == view.getCashout())) {
+				JOptionPane.showMessageDialog(view, "You must gamble MORE!!");
+			}
+			System.out.println("Delay : " + timer.getDelay());
+			view.refresh();
+		}
+		
+		void updateReels(){
 			timer.setDelay(delay);
 			delay *= 1.15;
 			model.pull();
 			setReels();
-			if (delay > 1000) {
-				timer.stop();
-				int winnings = model.getWinnings(view.getBetAmount());
-				view.setWinAmount((winnings));
-				view.setTotalMonet((winnings + view.getTotalMoney()));
-			}
-			System.out.println("Delay : " + timer.getDelay());
-			if (e.getSource() == view.getPull()) {
-				delay = new Random().nextInt(20) + 10;
-				timer.start();
-			} else if ((e.getSource() == view.getCashout())) {
-				JOptionPane.showMessageDialog(view, "You must gamble MORE!!");
-			}
-			view.refresh();
+		}
+
+		void stopReel() {
+			timer.stop();
+			int winnings = model.getWinnings(view.getBetAmount());
+			view.setWinAmount((winnings));
+			view.setTotalMonet((winnings + view.getTotalMoney()));
+		}
+
+		void startPull() {
+			view.setBetAmount();
+			delay = new Random().nextInt(20) + 10;
+			timer.start();
 		}
 
 		/**

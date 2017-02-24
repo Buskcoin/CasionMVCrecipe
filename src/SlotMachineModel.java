@@ -3,7 +3,9 @@ public class SlotMachineModel {
 	private String reel1;
 	private String reel2;
 	private String reel3;
-
+	private int betAmount;
+	private int totalCredits;
+	
 	void pull() {
 		reel1 = getRandomString();
 		reel2 = getRandomString();
@@ -34,7 +36,7 @@ public class SlotMachineModel {
 		} else if (reel1.equals(reel2)) {
 			return 1;
 		}
-		return -1;
+		return 0;
 	}
 
 	public String getReel1() {

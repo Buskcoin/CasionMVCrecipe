@@ -11,7 +11,7 @@ public class SlotMachineView extends JFrame {
 	ImageIcon SEVEN = new ImageIcon("seven.png");
 	ImageIcon BAR = new ImageIcon("bar.png");
 	JButton cashOut = new JButton("Cash Out");
-	JButton betOne = new JButton("BET ONE");
+	JTextField betOne = new JTextField(10);
 	JButton pull = new JButton("SPIN");
 	JPanel gamblePanel = new JPanel();
 	JPanel buttonPanel = new JPanel();
@@ -127,11 +127,11 @@ public class SlotMachineView extends JFrame {
 	}
 
 	public void setBetAmount() {
-		this.bet.setText("" + 4);
+		this.bet.setText(betOne.getText());
 	}
 
-	public void setTotalMonet(int totalMoney) {
-		this.totalMoney.setText("" + totalMoney);
+	public void setTotalMonet(int total) {
+		this.totalMoney.setText("" + total);
 	}
 
 	public int getTotalMoney() {
