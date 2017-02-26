@@ -11,7 +11,7 @@ public class SlotMachineView extends JFrame {
 	ImageIcon SEVEN = new ImageIcon("seven.png");
 	ImageIcon BAR = new ImageIcon("bar.png");
 	JButton cashOut = new JButton("Cash Out");
-	JTextField betOne = new JTextField(10);
+	JButton betOne = new JButton("Bet One");
 	JButton pull = new JButton("SPIN");
 	JPanel gamblePanel = new JPanel();
 	JPanel buttonPanel = new JPanel();
