@@ -1,0 +1,30 @@
+Keith Groves
+
+Software Design
+
+CST338
+
+MVC Slot Machine
+
+Create a slot machine that adheres to the MVC design pattern. The view will be styled as a typical casino slot machine with three reels. 
+
+Each reel must have 3 different possible images that randomly chosen when the user pressed the spin button. Depending on the amount of matching reels, the user will bet and possibly win credits.
+
+two matches from left to right : 2 x wager
+three matches from left to right : 3 x wager
+
+The slot machine will also have three buttons: Spin, Bet One, and Cash out.
+
+Spin will cause the reels to randomize until an arrangement is chosen. 
+
+Bet one will increase the user's bet by one.
+
+Cash out will exit the program. 
+
+There are three requirement for this program:
+
+All the calculations to what the user wins will be handled in the model. 
+
+All user controlls will be carried out in the Controller class.
+
+All the GUI aspects of this program will be handled in the View class.
