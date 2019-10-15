@@ -25,4 +25,5 @@ public class Casino
       view.setVisible(true);
       view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    }
+
 }
